@@ -15,3 +15,5 @@ type Repository[T any, ID any] interface {
 	DeleteAllByID(ids iter.Seq[ID]) error
 	DeleteAll() error
 }
+
+type UserModel struct{}

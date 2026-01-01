@@ -5,6 +5,7 @@ import (
 	"log"
 	"os"
 
+	"github.com/mhcvintar/repo-gen/internal"
 	"github.com/spf13/cobra"
 )
 
@@ -21,7 +22,13 @@ func main() {
 		Use:   "repogen",
 		Short: "",
 		RunE: func(cmd *cobra.Command, args []string) error {
-			return nil
+			return internal.NewGenerator(
+				source,
+				repository,
+				destination,
+				packageName,
+				implementation,
+			).Generate()
 		},
 	}
 
