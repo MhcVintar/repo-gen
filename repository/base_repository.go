@@ -117,6 +117,7 @@ func (b *BaseRepository[T, ID]) Save(entity *T) (*T, error) {
 	return entity, nil
 }
 
+// TODO: think if it makes sense to have a batch save with transaction
 func (b *BaseRepository[T, ID]) SaveAll(entities iter.Seq[*T]) iter.Seq2[*T, error] {
 	return func(yield func(*T, error) bool) {
 		for e := range entities {

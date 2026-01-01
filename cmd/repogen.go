@@ -4,7 +4,9 @@ import (
 	"fmt"
 	"log"
 	"os"
+	"path/filepath"
 
+	"github.com/mhcvintar/repo-gen/internal"
 	"github.com/spf13/cobra"
 )
 
@@ -21,6 +23,14 @@ func main() {
 		Use:   "repogen",
 		Short: "",
 		RunE: func(cmd *cobra.Command, args []string) error {
+			parser := internal.NewParser(filepath.Clean(source), repository)
+			resolver := internal.NewResolver()
+			generator := internal.NewGenerator()
+
+			_ = parser
+			_ = resolver
+			_ = generator
+
 			return nil
 		},
 	}
